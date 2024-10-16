@@ -50,7 +50,7 @@ const Home = () => {
           <h2 className="font-bold text-lg mb-4">Key Leagues</h2>
           <ul className="space-y-4">
             <li className="flex items-center space-x-3">
-              <img src="ipl-logo.png" alt="IPL" className="w-8 h-8" />
+              <img src="src\components\leagues\ipl-logo.jpg" alt="IPL" className="w-8 h-8" />
               <NavLink
                 to="/ipl"
                 className="hover:text-blue-400"
@@ -70,7 +70,7 @@ const Home = () => {
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="t20blast-logo.png" alt="T20 Blast" className="w-8 h-8" />
+              <img src="src\t20.png" alt="T20 Blast" className="w-8 h-8" />
               <NavLink
                 to="/t20-blast"
                 className="hover:text-blue-400"
@@ -202,7 +202,7 @@ const Home = () => {
             <ul className="space-y-4">
               <li>
                 <NavLink
-                  to="/article/ipl-final"
+                  to="https://www.thenationalnews.com/sport/ipl/2022/05/30/record-crowd-of-104000-watches-hardik-pandyas-gujarat-titans-lift-ipl-2022-title/"
                   className="hover:text-blue-400"
                   activeClassName="font-bold"
                 >
@@ -211,7 +211,7 @@ const Home = () => {
               </li>
               <li>
                 <NavLink
-                  to="/article/pak-beats-afg"
+                  to="https://www.espncricinfo.com/series/afghanistan-in-sri-lanka-aug-2023-2023-1392507/afghanistan-vs-pakistan-2nd-odi-1390345/match-report"
                   className="hover:text-blue-400"
                   activeClassName="font-bold"
                 >
@@ -220,7 +220,7 @@ const Home = () => {
               </li>
               <li>
                 <NavLink
-                  to="/article/eng-vs-rsa"
+                  to="https://www.icc-cricket.com/media-releases/semi-final-memories-to-the-fore-ahead-of-england-south-africa-clash"
                   className="hover:text-blue-400"
                   activeClassName="font-bold"
                 >
