@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Line, Radar } from 'react-chartjs-2';
 
 const ComparePlayers = () => {
-  const playerIds = Array.from({ length: 100 }, (_, i) => i + 1);// Fixed player IDs for comparison
-  const [selectedPlayer1, setSelectedPlayer1] = useState(1); // Default to player ID 1
-  const [selectedPlayer2, setSelectedPlayer2] = useState(2); // Default to player ID 2
+  const playerIds = Array.from({ length: 100 }, (_, i) => i + 1);
+  const [selectedPlayer1, setSelectedPlayer1] = useState(1); 
+  const [selectedPlayer2, setSelectedPlayer2] = useState(2);
   const [playerStats, setPlayerStats] = useState({});
-  const [playerNames, setPlayerNames] = useState({}); // Store player names
+  const [playerNames, setPlayerNames] = useState({}); 
 
-  // Fetch player stats based on selected player IDs
   const fetchPlayerStats = async (playerId) => {
     try {
       const response = await fetch(`https://jameagle.pythonanywhere.com/stats/performance/${playerId}?format=json`, {
@@ -18,21 +17,18 @@ const ComparePlayers = () => {
       });
       const data = await response.json();
       
-      // Store stats and names
       setPlayerStats((prevStats) => ({ ...prevStats, [playerId]: data }));
-      setPlayerNames((prevNames) => ({ ...prevNames, [playerId]: data.player_name })); // Store player names
+      setPlayerNames((prevNames) => ({ ...prevNames, [playerId]: data.player_name })); 
     } catch (error) {
       console.error(`Error fetching stats for player ${playerId}:`, error);
     }
   };
 
-  // Load player stats when the component mounts or when player selections change
   useEffect(() => {
     fetchPlayerStats(selectedPlayer1);
     fetchPlayerStats(selectedPlayer2);
   }, [selectedPlayer1, selectedPlayer2]);
 
-  // Prepare data for overall performance chart
   const overallData = {
     labels: ['Batting Score', 'Bowling Score', 'Impact Score', 'Player Rating'],
     datasets: [
@@ -105,7 +101,7 @@ const ComparePlayers = () => {
         <div className="bg-gray-800 p-4 rounded shadow-lg">
           <h3 className="font-bold text-lg mb-2">Select {playerNames[selectedPlayer1]}</h3> {/* Display player name */}
           <select
-            className="bg-gray-700 p-2 mb-4 w-full"
+            className="bg-gray-700 p-4 mb-4 w-full"
             onChange={(e) => setSelectedPlayer1(playerIds[e.target.value])}
             value={playerIds.indexOf(selectedPlayer1)}
           >
@@ -121,7 +117,7 @@ const ComparePlayers = () => {
         <div className="bg-gray-800 p-4 rounded shadow-lg">
           <h3 className="font-bold text-lg mb-2">Select {playerNames[selectedPlayer2]}</h3> {/* Display player name */}
           <select
-            className="bg-gray-700 p-2 mb-4 w-full"
+            className="bg-gray-700 p-4 mb-4 w-full"
             onChange={(e) => setSelectedPlayer2(playerIds[e.target.value])}
             value={playerIds.indexOf(selectedPlayer2)}
           >
@@ -229,31 +225,71 @@ const ComparePlayers = () => {
         <table className="min-w-full bg-gray-800">
           <thead>
             <tr>
-              <th className="py-2">Metric</th>
-              <th className="py-2">{playerStats[selectedPlayer1]?.player_name}</th>
-              <th className="py-2">{playerStats[selectedPlayer2]?.player_name}</th>
+              <th className="p-4 text-left">Metric</th>
+              <th className="p-4 text-left">{playerStats[selectedPlayer1]?.player_name}</th>
+              <th className="p-4 text-left">{playerStats[selectedPlayer2]?.player_name}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td className="py-2">Batting Score</td>
-              <td className="py-2">{playerStats[selectedPlayer1]?.batting_score || 0}</td>
-              <td className="py-2">{playerStats[selectedPlayer2]?.batting_score || 0}</td>
+              <td className="p-4">Batting Score</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.batting_score || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.batting_score || 0}</td>
             </tr>
             <tr>
-              <td className="py-2">Bowling Score</td>
-              <td className="py-2">{playerStats[selectedPlayer1]?.bowling_score || 0}</td>
-              <td className="py-2">{playerStats[selectedPlayer2]?.bowling_score || 0}</td>
+              <td className="p-4">Bowling Score</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.bowling_score || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.bowling_score || 0}</td>
             </tr>
             <tr>
-              <td className="py-2">Impact Score</td>
-              <td className="py-2">{playerStats[selectedPlayer1]?.impact_score || 0}</td>
-              <td className="py-2">{playerStats[selectedPlayer2]?.impact_score || 0}</td>
+              <td className="p-4">Impact Score</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.impact_score || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.impact_score || 0}</td>
             </tr>
             <tr>
-              <td className="py-2">Player Rating</td>
-              <td className="py-2">{playerStats[selectedPlayer1]?.player_rating || 0}</td>
-              <td className="py-2">{playerStats[selectedPlayer2]?.player_rating || 0}</td>
+              <td className="p-4">Player Rating</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.player_rating || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.player_rating || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Runs</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_runs_scored || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_runs_scored || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Balls Faced</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_balls_faced || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_balls_faced || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Fours</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_fours || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_fours || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Sixes</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_sixes || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_sixes || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Strike Rate</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.strike_rate || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.strike_rate || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Wickets</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_wickets_taken || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_wickets_taken || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Balls</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_balls_bowled || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_balls_bowled || 0}</td>
+            </tr>
+            <tr>
+              <td className="p-4">Runs Conceded</td>
+              <td className="p-4">{playerStats[selectedPlayer1]?.total_runs_conceded || 0}</td>
+              <td className="p-4">{playerStats[selectedPlayer2]?.total_runs_conceded || 0}</td>
             </tr>
           </tbody>
         </table>
