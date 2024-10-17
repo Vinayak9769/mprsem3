@@ -1,146 +1,185 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2'; // Using Bar for simplicity
-import 'chart.js/auto'; // Import Chart.js
+import React, { useEffect, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
 
-const PSL = () => {
-  // Sample ball-by-ball statistics data
-  const ballStats = [
-    { over: 1, ball: 1, batsman: 'Babar Azam', runs: 4, extras: 0, total: 4 },
-    { over: 1, ball: 2, batsman: 'Mohammad Rizwan', runs: 2, extras: 0, total: 6 },
-    { over: 1, ball: 3, batsman: 'Sharjeel Khan', runs: 1, extras: 0, total: 7 },
-    { over: 1, ball: 4, batsman: 'Babar Azam', runs: 6, extras: 0, total: 13 },
-    { over: 1, ball: 5, batsman: 'Mohammad Rizwan', runs: 0, extras: 0, total: 13 },
-    { over: 1, ball: 6, batsman: 'Sharjeel Khan', runs: 1, extras: 0, total: 14 },
-    { over: 2, ball: 1, batsman: 'Babar Azam', runs: 3, extras: 0, total: 17 },
-    { over: 2, ball: 2, batsman: 'Mohammad Rizwan', runs: 2, extras: 0, total: 19 },
-    { over: 2, ball: 3, batsman: 'Sharjeel Khan', runs: 1, extras: 0, total: 20 },
-    { over: 2, ball: 4, batsman: 'Babar Azam', runs: 4, extras: 0, total: 24 },
-    { over: 2, ball: 5, batsman: 'Mohammad Rizwan', runs: 1, extras: 0, total: 25 },
-    { over: 2, ball: 6, batsman: 'Sharjeel Khan', runs: 2, extras: 0, total: 27 },
-    { over: 3, ball: 1, batsman: 'Babar Azam', runs: 0, extras: 0, total: 27 },
-    { over: 3, ball: 2, batsman: 'Mohammad Rizwan', runs: 3, extras: 0, total: 30 },
-    { over: 3, ball: 3, batsman: 'Sharjeel Khan', runs: 5, extras: 0, total: 35 },
-    { over: 3, ball: 4, batsman: 'Babar Azam', runs: 1, extras: 0, total: 36 },
-    { over: 3, ball: 5, batsman: 'Mohammad Rizwan', runs: 4, extras: 0, total: 40 },
-    { over: 3, ball: 6, batsman: 'Sharjeel Khan', runs: 2, extras: 0, total: 42 },
-    { over: 4, ball: 1, batsman: 'Babar Azam', runs: 6, extras: 0, total: 48 },
-    { over: 4, ball: 2, batsman: 'Mohammad Rizwan', runs: 0, extras: 0, total: 48 },
-    { over: 4, ball: 3, batsman: 'Sharjeel Khan', runs: 1, extras: 0, total: 49 },
-    { over: 4, ball: 4, batsman: 'Babar Azam', runs: 2, extras: 0, total: 51 },
-    { over: 4, ball: 5, batsman: 'Mohammad Rizwan', runs: 0, extras: 0, total: 51 },
-    { over: 4, ball: 6, batsman: 'Sharjeel Khan', runs: 3, extras: 0, total: 54 },
-    { over: 5, ball: 1, batsman: 'Babar Azam', runs: 1, extras: 0, total: 55 },
-    { over: 5, ball: 2, batsman: 'Mohammad Rizwan', runs: 5, extras: 0, total: 60 },
-    { over: 5, ball: 3, batsman: 'Sharjeel Khan', runs: 0, extras: 0, total: 60 },
-    { over: 5, ball: 4, batsman: 'Babar Azam', runs: 4, extras: 0, total: 64 },
-    { over: 5, ball: 5, batsman: 'Mohammad Rizwan', runs: 2, extras: 0, total: 66 },
-    { over: 5, ball: 6, batsman: 'Sharjeel Khan', runs: 0, extras: 0, total: 66 },
-    { over: 6, ball: 1, batsman: 'Babar Azam', runs: 3, extras: 0, total: 69 },
-    { over: 6, ball: 2, batsman: 'Mohammad Rizwan', runs: 2, extras: 0, total: 71 },
-    { over: 6, ball: 3, batsman: 'Sharjeel Khan', runs: 4, extras: 0, total: 75 },
-    { over: 6, ball: 4, batsman: 'Babar Azam', runs: 1, extras: 0, total: 76 },
-    { over: 6, ball: 5, batsman: 'Mohammad Rizwan', runs: 3, extras: 0, total: 79 },
-    { over: 6, ball: 6, batsman: 'Sharjeel Khan', runs: 2, extras: 0, total: 81 },
-  ];
+const T20 = () => {
+  const [ballStats, setBallStats] = useState([]);
+  const [matchDetails, setMatchDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Sample data for the graphs
+  // Fetch Ball by Ball Stats
+  useEffect(() => {
+    const fetchBallStats = async () => {
+      try {
+        const response = await fetch(
+          'https://jameagle.pythonanywhere.com/stats/match/1359542', {
+            headers: {
+              'ngrok-skip-browser-warning': 'true',
+            },
+          }
+        );
+        const data = await response.json();
+        setBallStats(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching ball stats:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchBallStats();
+  }, []);
+
+  // Fetch Match Summary Info (Team that won, who batted first)
+  useEffect(() => {
+    const fetchMatchDetails = async () => {
+      try {
+        const response = await fetch(
+          'https://jameagle.pythonanywhere.com/stats/matches/', {
+            headers: {
+              'ngrok-skip-browser-warning': 'true',
+            },
+          }
+        );
+        const data = await response.json();
+        const match = data.find((match) => match.match_id === 1359542); // Get the specific match data
+        setMatchDetails(match);
+      } catch (error) {
+        console.error('Error fetching match details:', error);
+      }
+    };
+
+    fetchMatchDetails();
+  }, []);
+
+  if (loading) {
+    return <p className="text-white">Loading...</p>;
+  }
+
+  // Prepare the data for the graph (Runs Scored by Player)
   const playerPerformanceData = {
-    labels: ['Babar Azam', 'Mohammad Rizwan', 'Sharjeel Khan', 'Fakhar Zaman', 'Shadab Khan'],
+    labels: ballStats.map((ball) => ball.batter_name),
     datasets: [
       {
         label: 'Runs Scored',
-        data: [81, 79, 75, 40, 30],
+        data: ballStats.map((ball) => ball.batter_runs),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
       },
     ],
   };
 
-  const wicketsData = {
-    labels: ['Shaheen Afridi', 'Shadab Khan', 'Hasan Ali', 'Mohammad Amir', 'Usama Mir'],
+  // Prepare data for Runs Per Over graph
+  const runsPerOverData = {
+    labels: [...new Set(ballStats.map((ball) => ball.over))], // Get unique overs
     datasets: [
       {
-        label: 'Wickets Taken',
-        data: [2, 1, 3, 2, 4],
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+        label: 'Runs Per Over',
+        data: ballStats.reduce((acc, ball) => {
+          acc[ball.over] = (acc[ball.over] || 0) + ball.batter_runs;
+          return acc;
+        }, {}),
+        backgroundColor: 'rgba(255, 159, 64, 0.6)',
       },
     ],
   };
 
-  const strikeRateData = {
-    labels: ['Babar Azam', 'Mohammad Rizwan', 'Sharjeel Khan', 'Fakhar Zaman', 'Shadab Khan'],
+  // Prepare data for Wickets Per Bowler graph
+  const wicketsPerBowlerData = {
+    labels: [...new Set(ballStats.filter(ball => ball.wicket).map((ball) => ball.bowler_name))], // Get unique bowler names
     datasets: [
       {
-        label: 'Strike Rate',
-        data: [145, 132, 138, 125, 130],
+        label: 'Wickets Per Bowler',
+        data: ballStats.reduce((acc, ball) => {
+          if (ball.wicket) {
+            acc[ball.bowler_name] = (acc[ball.bowler_name] || 0) + 1;
+          }
+          return acc;
+        }, {}),
         backgroundColor: 'rgba(153, 102, 255, 0.6)',
       },
     ],
   };
 
-  const foursSixesData = {
-    labels: ['Babar Azam', 'Mohammad Rizwan', 'Sharjeel Khan', 'Fakhar Zaman', 'Shadab Khan'],
-    datasets: [
-      {
-        label: 'Fours',
-        data: [9, 6, 7, 4, 3],
-        backgroundColor: 'rgba(255, 206, 86, 0.6)',
-      },
-      {
-        label: 'Sixes',
-        data: [2, 1, 0, 1, 4],
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-      },
-    ],
-  };
+  // Match Highlights with additional info
+  const matchHighlights = [
+    `Winning Team: ${matchDetails?.winner || "N/A"}`,
+    `Team that batted first: ${matchDetails?.bat_first || "N/A"}`,
+    `Team that batted second: ${matchDetails?.bat_second || "N/A"}`,
+    `Target Score: ${matchDetails?.target_score || "N/A"}`,
+    `Chased Successfully: ${matchDetails?.chased_successfully ? "Yes" : "No"}`,
+    `Innings 1 Runs: ${matchDetails?.innings1_runs || "N/A"}`,
+    `Innings 1 Wickets: ${matchDetails?.innings1_wickets || "N/A"}`,
+    `Innings 2 Runs: ${matchDetails?.innings2_runs || "N/A"}`,
+    `Innings 2 Wickets: ${matchDetails?.innings2_wickets || "N/A"}`,
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4 flex">
-      <div className="bg-gray-800 rounded shadow-md p-4 w-3/4">
-        <h2 className="text-2xl font-bold mb-4">PSL Ball by Ball Statistics</h2>
-        <table className="w-full table-auto border-collapse">
+    <div className="min-h-screen bg-[#1c2038] p-4 flex flex-col lg:flex-row lg:space-x-4 text-white">
+      {/* Highlights Section */}
+      <div className="bg-gray-800 rounded shadow-md p-4 mb-4 lg:w-1/4">
+        <h3 className="font-bold mb-2 text-lg">Match Highlights</h3>
+        <ul className="list-disc list-inside">
+          {matchHighlights.map((highlight, index) => (
+            <li key={index}>{highlight}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Table Section */}
+      <div className="bg-gray-900 rounded shadow-md p-4 mb-4 lg:w-1/2 overflow-auto">
+        <h2 className="text-2xl font-bold mb-4">IPL Ball by Ball Statistics</h2>
+        <table className="w-full table-auto border-collapse text-white">
           <thead>
             <tr className="bg-gray-700">
+              <th className="border px-4 py-2">Innings</th>
               <th className="border px-4 py-2">Over</th>
               <th className="border px-4 py-2">Ball</th>
               <th className="border px-4 py-2">Batsman</th>
+              <th className="border px-4 py-2">Non-Striker</th>
+              <th className="border px-4 py-2">Bowler</th>
               <th className="border px-4 py-2">Runs</th>
               <th className="border px-4 py-2">Extras</th>
-              <th className="border px-4 py-2">Total</th>
             </tr>
           </thead>
           <tbody>
             {ballStats.map((ball, index) => (
-              <tr key={index} className="border-b border-gray-700">
-                <td className="border px-4 py-2">{`${ball.over}.${ball.ball}`}</td>
-                <td className="border px-4 py-2">{ball.batsman}</td>
-                <td className="border px-4 py-2">{ball.runs}</td>
-                <td className="border px-4 py-2">{ball.extras}</td>
-                <td className="border px-4 py-2">{ball.total}</td>
+              <tr key={index} className="border-t border-gray-600">
+                <td className="border px-4 py-2">{ball.innings}</td>
+                <td className="border px-4 py-2">{ball.over}</td>
+                <td className="border px-4 py-2">{ball.ball}</td>
+                <td className="border px-4 py-2">{ball.batter_name}</td>
+                <td className="border px-4 py-2">{ball.non_striker_name}</td>
+                <td className="border px-4 py-2">{ball.bowler_name}</td>
+                <td className="border px-4 py-2">{ball.batter_runs}</td>
+                <td className="border px-4 py-2">{ball.extra_runs}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="flex flex-col w-1/4 ml-4">
-        <div className="bg-gray-800 rounded shadow-md p-4 mb-4">
+
+      {/* Graph Section */}
+      <div className="lg:w-1/4 space-y-4">
+        {/* Runs Scored by Players Graph */}
+        <div className="bg-gray-800 rounded shadow-md p-4">
           <h3 className="font-bold mb-2">Runs Scored by Players</h3>
           <Bar data={playerPerformanceData} options={{ responsive: true }} />
         </div>
-        <div className="bg-gray-800 rounded shadow-md p-4 mb-4">
-          <h3 className="font-bold mb-2">Wickets Taken by Players</h3>
-          <Bar data={wicketsData} options={{ responsive: true }} />
+
+        {/* Runs Per Over Graph */}
+        <div className="bg-gray-800 rounded shadow-md p-4">
+          <h3 className="font-bold mb-2">Runs Per Over</h3>
+          <Bar data={runsPerOverData} options={{ responsive: true }} />
         </div>
-        <div className="bg-gray-800 rounded shadow-md p-4 mb-4">
-          <h3 className="font-bold mb-2">Strike Rates</h3>
-          <Bar data={strikeRateData} options={{ responsive: true }} />
-        </div>
-        <div className="bg-gray-800 rounded shadow-md p-4 mb-4">
-          <h3 className="font-bold mb-2">Fours and Sixes</h3>
-          <Bar data={foursSixesData} options={{ responsive: true }} />
+
+        {/* Wickets Per Bowler Graph */}
+        <div className="bg-gray-800 rounded shadow-md p-4">
+          <h3 className="font-bold mb-2">Wickets Per Bowler</h3>
+          <Bar data={wicketsPerBowlerData} options={{ responsive: true }} />
         </div>
       </div>
     </div>
   );
 };
 
-export default PSL;
+export default T20;

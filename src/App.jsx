@@ -15,6 +15,8 @@ import WT20WC from './components/leagues/WT20WC';
 
 import UAEVsNam from './components/leagues/UAEVsNam';
 import EngWVsRSAW from './components/leagues/EngWVsRSAW';
+import NzVsEng from './components/leagues/NZVsEng';
+import INDVsAus from './components/leagues/IndVsAus';
 function App() {
   return (
     <>
@@ -31,9 +33,23 @@ function App() {
         <Route path="/psl" element={<PSL />} />
         <Route path="/cpl" element={<CPL />} />
         <Route path="/lpl" element={<LPL />} />
+        <Route path="/nz-vs-eng" element={<NzVsEng />} />
+        <Route path="/ind-vs-auS" element={< INDVsAus/>} />
         <Route path="/wt20" element={<WT20WC />} />
         <Route path="/uae-vs-nam" element={<UAEVsNam />} />
         <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+
+
+        {/* articles from here
+
+        <Route path="news/ashes-squad-2024" element={<Austeam />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} />
+        <Route path="/eng-w-vs-rsa-w" element={<EngWVsRSAW />} /> */}
+
       </Routes>
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">

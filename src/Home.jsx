@@ -47,81 +47,82 @@ const Home = () => {
         {/* Sidebar (Left) */}
         <aside className="w-full md:w-1/4 bg-[#232743] p-6 rounded-lg shadow-lg">
           {/* Key Leagues Section */}
-          <h2 className="font-bold text-lg mb-4">Key Leagues</h2>
+          <h2 className="font-bold text-lg mb-4">Key Matches</h2>
           <ul className="space-y-4">
             <li className="flex items-center space-x-3">
-              <img src="src\components\leagues\ipl-logo.jpg" alt="IPL" className="w-8 h-8" />
+              <img src="src\teluguism-srhvsmiipl2023.jpg" alt="IPL" className="w-8 h-8" />
               <NavLink
                 to="/ipl"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Indian Premier League
+               Mumbai Indians VS Sunrisers Hyderabad
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="bbl-logo.png" alt="BBL" className="w-8 h-8" />
+              <img src="src\cskvsgt.jpg" alt="BBL" className="w-8 h-8" />
               <NavLink
                 to="/bbl"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Big Bash League
+                CSK Vs GT
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="src\t20.png" alt="T20 Blast" className="w-8 h-8" />
+              <img src="src\download (6).jpg" alt="T20 Blast" className="w-8 h-8" />
               <NavLink
                 to="/t20-blast"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                T20 Blast
+                LSG VS KKR
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="psl-logo.png" alt="PSL" className="w-8 h-8" />
+              <img src="src\images.jpg" alt="PSL" className="w-8 h-8" />
               <NavLink
                 to="/psl"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Pakistan Super League
+                CSK VS DC
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="cpl-logo.png" alt="CPL" className="w-8 h-8" />
+              <img src="src\download (7).jpg" alt="CPL" className="w-8 h-8" />
               <NavLink
                 to="/cpl"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Caribbean Premier League
+                GT VS MI
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
-              <img src="lpl-logo.png" alt="LPL" className="w-8 h-8" />
+              <img src="src\download (8).jpg" alt="LPL" className="w-8 h-8" />
               <NavLink
                 to="/lpl"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Lanka Premier League
+                RCB VS Sunrisers Hyderabad
               </NavLink>
             </li>
           </ul>
 
           {/* Top International Section */}
-          <h2 className="font-bold text-lg mt-8 mb-4">Top International</h2>
+          <h2 className="font-bold text-lg mt-8 mb-4">Other Highlights</h2>
           <ul className="space-y-4">
             <li className="flex items-center">
-              <span role="img" aria-label="trophy">🏆</span>
+           
+              
               <NavLink
                 to="/wt20"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                WT20 WC
+                GT VS Sunrisers Hyderabad
               </NavLink>
             </li>
             <li>
@@ -130,7 +131,7 @@ const Home = () => {
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Ind Vs Aus
+                 CSK VS GT
               </NavLink>
             </li>
             <li>
@@ -139,7 +140,7 @@ const Home = () => {
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                NZ Vs Eng
+                RCB VS GT
               </NavLink>
             </li>
             <li>
@@ -148,7 +149,7 @@ const Home = () => {
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                UAE Vs Nam
+                KKR VS CSK
               </NavLink>
             </li>
             <li>
@@ -157,7 +158,7 @@ const Home = () => {
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                Eng W Vs RSA W
+                MI VS LSG
               </NavLink>
             </li>
           </ul>
@@ -235,7 +236,7 @@ const Home = () => {
         </aside>
         
       </div>
-      {/* News Section in a Sporty Grid Format */}
+      {/* News Section  */}
 <div className="bg-[#1c2038] p-6 rounded-lg shadow-lg mt-8">
   <h2 className="text-xl font-bold mb-6 text-white">Latest Sports News</h2>
 
@@ -244,7 +245,7 @@ const Home = () => {
     {/* News Card 1 */}
     <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
       <img
-        src="news-img1.jpg"
+        src="src\download (4).jpg"
         alt="News 1"
         className="w-full h-32 object-cover rounded-lg mb-4"
       />
@@ -254,7 +255,7 @@ const Home = () => {
       <p className="text-gray-400 text-sm">
         In a thrilling final, India clinched the T20 World Cup, defeating Australia by 7 wickets. The victory marks India's third title win in T20 history.
       </p>
-      <a href="/news/india-wins-t20" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+      <a href="https://www.aljazeera.com/sports/2024/6/30/how-incredible-india-won-the-icc-t20-world-cup-2024-to-end-13-year-wait" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
         Read More
       </a>
     </div>
@@ -262,7 +263,7 @@ const Home = () => {
     {/* News Card 2 */}
     <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
       <img
-        src="news-img2.jpg"
+        src="src\download (5).jpg"
         alt="News 2"
         className="w-full h-32 object-cover rounded-lg mb-4"
       />
@@ -272,7 +273,7 @@ const Home = () => {
       <p className="text-gray-400 text-sm">
         Nepal has secured a spot in the upcoming Cricket World Cup after an impressive series of wins in the qualifying rounds.
       </p>
-      <a href="/news/nepal-qualifies-wc" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+      <a href="https://www.espncricinfo.com/story/nepal-and-oman-qualify-for-2024-mens-t20-world-cup-1406860" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
         Read More
       </a>
     </div>
@@ -308,7 +309,7 @@ const Home = () => {
       <p className="text-gray-400 text-sm">
         South Africa triumphed over Pakistan in a tightly contested Test series, winning 2-1 after an intense final match.
       </p>
-      <a href="/news/pak-vs-sa" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+      <a href="https://www.mykhel.com/cricket/pakistan-vs-south-africa-head-to-head-in-test/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
         Read More
       </a>
     </div>
@@ -326,7 +327,7 @@ const Home = () => {
       <p className="text-gray-400 text-sm">
         England's women's cricket team set a new world record with the highest team score in T20 history, dominating their match against New Zealand.
       </p>
-      <a href="/news/eng-womens-record" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+      <a href="https://www.starbiopic.com/sports/england-womens-cricket-team-sets-record-with-massive-victory-over-ireland/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
         Read More
       </a>
     </div>
@@ -344,7 +345,7 @@ const Home = () => {
       <p className="text-gray-400 text-sm">
         Australia has unveiled its squad for the 2024 Ashes series, featuring a mix of experienced players and exciting new talent.
       </p>
-      <a href="/news/ashes-squad-2024" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+      <a href="https://www.espncricinfo.com/team/australia-2/squads" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
         Read More
       </a>
     </div>
