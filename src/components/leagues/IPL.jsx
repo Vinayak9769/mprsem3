@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
+import { useParams } from 'react-router-dom';
 
 const T20 = () => {
+  const { match_id } = useParams(); // Get match_id from the URL
   const [ballStats, setBallStats] = useState([]);
   const [matchDetails, setMatchDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,11 +14,11 @@ const T20 = () => {
     const fetchBallStats = async () => {
       try {
         const response = await fetch(
-          'https://live-merely-drum.ngrok-free.app/stats/match/1359543', {
-            headers: {
-              'ngrok-skip-browser-warning': 'true',
-            },
-          }
+          `https://jameagle.pythonanywhere.com/stats/match/${match_id}`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+        }
         );
         const data = await response.json();
         setBallStats(data);
@@ -28,21 +30,21 @@ const T20 = () => {
     };
 
     fetchBallStats();
-  }, []);
+  }, [match_id]); // Add match_id to the dependency array
 
   // Fetch Match Summary Info (Team that won, who batted first)
   useEffect(() => {
     const fetchMatchDetails = async () => {
       try {
         const response = await fetch(
-          'https://live-merely-drum.ngrok-free.app/stats/matches/', {
-            headers: {
-              'ngrok-skip-browser-warning': 'true',
-            },
-          }
+          'https://jameagle.pythonanywhere.com/stats/matches/', {
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+        }
         );
         const data = await response.json();
-        const match = data.find((match) => match.match_id === 1359543); // Get the specific match data
+        const match = data.find((match) => match.match_id === parseInt(match_id)); // Get the specific match data
         setMatchDetails(match);
       } catch (error) {
         console.error('Error fetching match details:', error);
@@ -50,7 +52,7 @@ const T20 = () => {
     };
 
     fetchMatchDetails();
-  }, []);
+  }, [match_id]); // Add match_id to the dependency array
 
   if (loading) {
     return <p className="text-white">Loading...</p>;

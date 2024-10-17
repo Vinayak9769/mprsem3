@@ -52,11 +52,11 @@ const Home = () => {
             <li className="flex items-center space-x-3">
               <img src="src\teluguism-srhvsmiipl2023.jpg" alt="IPL" className="w-8 h-8" />
               <NavLink
-                to="/ipl"
+                to="/ipl/1359543"
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-               Mumbai Indians VS Sunrisers Hyderabad
+                Mumbai Indians VS Sunrisers Hyderabad
               </NavLink>
             </li>
             <li className="flex items-center space-x-3">
@@ -115,8 +115,8 @@ const Home = () => {
           <h2 className="font-bold text-lg mt-8 mb-4">Other Highlights</h2>
           <ul className="space-y-4">
             <li className="flex items-center">
-           
-              
+
+
               <NavLink
                 to="/wt20"
                 className="hover:text-blue-400"
@@ -131,7 +131,7 @@ const Home = () => {
                 className="hover:text-blue-400"
                 activeClassName="font-bold"
               >
-                 CSK VS GT
+                CSK VS GT
               </NavLink>
             </li>
             <li>
@@ -231,128 +231,128 @@ const Home = () => {
             </ul>
           </div>
 
-          
-         
+
+
         </aside>
-        
+
       </div>
       {/* News Section  */}
-<div className="bg-[#1c2038] p-6 rounded-lg shadow-lg mt-8">
-  <h2 className="text-xl font-bold mb-6 text-white">Latest Sports News</h2>
+      <div className="bg-[#1c2038] p-6 rounded-lg shadow-lg mt-8">
+        <h2 className="text-xl font-bold mb-6 text-white">Latest Sports News</h2>
 
-  {/* News Grid */}
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {/* News Card 1 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download (4).jpg"
-        alt="News 1"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        India Wins the T20 World Cup
-      </h3>
-      <p className="text-gray-400 text-sm">
-        In a thrilling final, India clinched the T20 World Cup, defeating Australia by 7 wickets. The victory marks India's third title win in T20 history.
-      </p>
-      <a href="https://www.aljazeera.com/sports/2024/6/30/how-incredible-india-won-the-icc-t20-world-cup-2024-to-end-13-year-wait" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
+        {/* News Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* News Card 1 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download (4).jpg"
+              alt="News 1"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              India Wins the T20 World Cup
+            </h3>
+            <p className="text-gray-400 text-sm">
+              In a thrilling final, India clinched the T20 World Cup, defeating Australia by 7 wickets. The victory marks India's third title win in T20 history.
+            </p>
+            <a href="https://www.aljazeera.com/sports/2024/6/30/how-incredible-india-won-the-icc-t20-world-cup-2024-to-end-13-year-wait" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
 
-    {/* News Card 2 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download (5).jpg"
-        alt="News 2"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        Nepal Qualifies for the Cricket World Cup
-      </h3>
-      <p className="text-gray-400 text-sm">
-        Nepal has secured a spot in the upcoming Cricket World Cup after an impressive series of wins in the qualifying rounds.
-      </p>
-      <a href="https://www.espncricinfo.com/story/nepal-and-oman-qualify-for-2024-mens-t20-world-cup-1406860" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
+          {/* News Card 2 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download (5).jpg"
+              alt="News 2"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              Nepal Qualifies for the Cricket World Cup
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Nepal has secured a spot in the upcoming Cricket World Cup after an impressive series of wins in the qualifying rounds.
+            </p>
+            <a href="https://www.espncricinfo.com/story/nepal-and-oman-qualify-for-2024-mens-t20-world-cup-1406860" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
 
-    {/* News Card 3 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download5.jpg"
-        alt="News 3"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        IPL: Mumbai Indians Beat Chennai Super Kings
-      </h3>
-      <p className="text-gray-400 text-sm">
-        Mumbai Indians pulled off a dramatic win against CSK in the last over to keep their playoff hopes alive in the ongoing IPL season.
-      </p>
-      <a href="https://www.hindustantimes.com/cricket/mumbai-indians-first-team-to-get-knocked-out-of-ipl-2024-playoffs-race-after-srh-crush-lsg-in-historic-win-101715189992900.html" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
+          {/* News Card 3 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download5.jpg"
+              alt="News 3"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              IPL: Mumbai Indians Beat Chennai Super Kings
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Mumbai Indians pulled off a dramatic win against CSK in the last over to keep their playoff hopes alive in the ongoing IPL season.
+            </p>
+            <a href="https://www.hindustantimes.com/cricket/mumbai-indians-first-team-to-get-knocked-out-of-ipl-2024-playoffs-race-after-srh-crush-lsg-in-historic-win-101715189992900.html" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
 
-    {/* News Card 4 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download (3).jpg"
-        alt="News 4"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        Pakistan vs South Africa: Test Series Results
-      </h3>
-      <p className="text-gray-400 text-sm">
-        South Africa triumphed over Pakistan in a tightly contested Test series, winning 2-1 after an intense final match.
-      </p>
-      <a href="https://www.mykhel.com/cricket/pakistan-vs-south-africa-head-to-head-in-test/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
+          {/* News Card 4 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download (3).jpg"
+              alt="News 4"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              Pakistan vs South Africa: Test Series Results
+            </h3>
+            <p className="text-gray-400 text-sm">
+              South Africa triumphed over Pakistan in a tightly contested Test series, winning 2-1 after an intense final match.
+            </p>
+            <a href="https://www.mykhel.com/cricket/pakistan-vs-south-africa-head-to-head-in-test/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
 
-    {/* News Card 5 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download (2).jpg"
-        alt="News 5"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        England Women's Team Sets New Record
-      </h3>
-      <p className="text-gray-400 text-sm">
-        England's women's cricket team set a new world record with the highest team score in T20 history, dominating their match against New Zealand.
-      </p>
-      <a href="https://www.starbiopic.com/sports/england-womens-cricket-team-sets-record-with-massive-victory-over-ireland/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
+          {/* News Card 5 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download (2).jpg"
+              alt="News 5"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              England Women's Team Sets New Record
+            </h3>
+            <p className="text-gray-400 text-sm">
+              England's women's cricket team set a new world record with the highest team score in T20 history, dominating their match against New Zealand.
+            </p>
+            <a href="https://www.starbiopic.com/sports/england-womens-cricket-team-sets-record-with-massive-victory-over-ireland/" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
 
-    {/* News Card 6 */}
-    <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
-      <img
-        src="src\download.jpg"
-        alt="News 6"
-        className="w-full h-32 object-cover rounded-lg mb-4"
-      />
-      <h3 className="text-lg font-semibold text-blue-400 mb-2">
-        Australia Announces Squad for Ashes 2024
-      </h3>
-      <p className="text-gray-400 text-sm">
-        Australia has unveiled its squad for the 2024 Ashes series, featuring a mix of experienced players and exciting new talent.
-      </p>
-      <a href="https://www.espncricinfo.com/team/australia-2/squads" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
-        Read More
-      </a>
-    </div>
-  </div>
-</div>
+          {/* News Card 6 */}
+          <div className="bg-[#232743] p-4 rounded-lg hover:bg-[#2b305c] transition duration-300 ease-in-out">
+            <img
+              src="src\download.jpg"
+              alt="News 6"
+              className="w-full h-32 object-cover rounded-lg mb-4"
+            />
+            <h3 className="text-lg font-semibold text-blue-400 mb-2">
+              Australia Announces Squad for Ashes 2024
+            </h3>
+            <p className="text-gray-400 text-sm">
+              Australia has unveiled its squad for the 2024 Ashes series, featuring a mix of experienced players and exciting new talent.
+            </p>
+            <a href="https://www.espncricinfo.com/team/australia-2/squads" className="block mt-4 text-blue-300 font-semibold hover:text-blue-400">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
 
-      
+
     </div>
   );
 };

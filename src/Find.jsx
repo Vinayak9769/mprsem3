@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom'
 const apiUrl = 'https://jameagle.pythonanywhere.com/stats/matches/';
 
 const mainTeams = [
- 'Chennai Super Kings', 'Mumbai Indians', 'Royal Challengers Bangalore',
+  'Chennai Super Kings', 'Mumbai Indians', 'Royal Challengers Bangalore',
   'Delhi Capitals', 'Kolkata Knight Riders', 'Rajasthan Royals',
   'Punjab Kings', 'Sunrisers Hyderabad', 'Gujarat Titans', 'Lucknow Super Giants',
 ];
@@ -71,7 +71,7 @@ const Find = () => {
           selectedTeams[team] &&
           (match.bat_first.includes(team) || match.bat_second.includes(team))
       );
-    
+
     const searchMatch =
       match.bat_first.toLowerCase().includes(searchTerm.toLowerCase()) ||
       match.bat_second.toLowerCase().includes(searchTerm.toLowerCase());
@@ -150,7 +150,7 @@ const Find = () => {
           ) : filteredMatches.length > 0 ? (
             filteredMatches.map((match) => (
               <div key={match.match_id} className="bg-gray-700 p-4 mb-4 rounded-md">
-                <h3 className="font-bold">{`${match.bat_first} vs ${match.bat_second}`}</h3>
+                <Link to={`/ipl/${match.match_id}`}><h3 className="font-bold">{`${match.bat_first} vs ${match.bat_second}`}</h3></Link>
                 <p>Date: {match.date}</p>
                 <p>Venue: {match.venue}</p>
                 <p>Target Score: {match.target_score}</p>
