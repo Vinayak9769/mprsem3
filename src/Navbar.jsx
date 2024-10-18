@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between p-4">
         {/* Brand Name */}
         <div className="text-3xl font-extrabold text-white">
-          CRICSTATS
+          STATS-CRIC
         </div>
 
         {/* Hamburger Menu for Mobile */}
